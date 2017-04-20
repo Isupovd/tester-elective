@@ -1,5 +1,5 @@
 <?php
-//namespace Isupovd\tester-elective\tests\models''
+namespace Isupovd\tester-elective\tests
 
 //require('../../models/ContactForm.php');
 
