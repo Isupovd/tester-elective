@@ -1,7 +1,6 @@
 <?php
-//namespace Isupovd\tester-elective
 
-require('../../src/models/ContactForm.php');
+namespace isupovd\testerelective\tests\models;
 
 use PHPUnit\Framework\TestCase;
 
@@ -10,6 +9,6 @@ class ContactFormTest extends TestCase
     public function testCreateObject()
     {
         $object = new ContactForm();
-        echo 'PASSED';
+        $this->assertObjectHasAttribute('name', $object);
     }
 }

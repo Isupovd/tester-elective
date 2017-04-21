@@ -1,11 +1,30 @@
 {
-    "name": "isupovd/tester-elective",
-    "description": "tester elective project",
-    "type": "project",
-    "require-dev": {
-        "phpunit/phpunit": "^6.1"
-    },
-    "license": "bsd",
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "isupovd/tester-elective",
+  "description": "tester elective project",
+  "type": "bsd",
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
+  },
+  "license": "bsd",
+  "authors": [
+    {
+      "name": "isupovd",
+      "email": "isupovd95@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "isupovd\\testerelective\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "isupovd\\testerelective\\tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  }
 }
