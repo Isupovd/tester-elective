@@ -1,6 +1,6 @@
 <?php
 
-namespace isupovd\testerelective\tests\models;
+namespace isupovd\testerelective\models;
 
 class ContactForm
 {
