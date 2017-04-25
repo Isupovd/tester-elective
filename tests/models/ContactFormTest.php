@@ -16,27 +16,13 @@ class ContactFormTest extends TestCase
         $this->assertObjectHasAttribute('message', $object);
     }
 
-    public function testValidateName()
+    public function testValidate()
     {
         $object = new ContactForm();
-        $this->assertFalse($object->validateName());
+        $this->assertFalse($object->validate());
+        $object->phone = "+79002040097";
         $object->name = 'Dima';
-        $this->assertTrue($object->validateName());
-    }
-
-    public function testValidatePhone()
-    {
-        $object = new ContactForm();
-        $this->assertFalse($object->validatePhone());
-        $object->phone = '+79002040097';
-        $this->assertTrue($object->validatePhone());
-    }
-
-    public function testValidateMessage()
-    {
-        $object = new ContactForm();
-        $this->assertFalse($object->validateMessage());
-        $object->message = 'Hello, my name is Dima';
-        $this->assertTrue($object->validateMessage());
+        $object->message = 'Hellow World';
+        $this->assertTrue($object->validate());
     }
 }

@@ -8,32 +8,12 @@ class ContactForm
     public $phone;
     public $message;
 
-    public function validateName()
+    public function validate()
     {
-        $result = true;
+        $result = false;
 
-        if (empty($this->name)){
-            $result = false;
-        }
-        return $result;
-    }
-
-    public function validatePhone()
-    {
-        $result = true;
-
-        if (empty($this->phone)){
-            $result = false;
-        }
-        return $result;
-    }
-
-    public function validateMessage()
-    {
-        $result = true;
-
-        if (empty($this->message)){
-            $result = false;
+        if (!empty($this->phone)&&(!empty($this->phone))&&(!empty($this->message))){
+            $result = true;
         }
         return $result;
     }
