@@ -8,6 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class ContactFormTest extends TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        unlink('tests/data/textfile.txt');
+    }
+
     public function testCreateObject()
     {
         $object = new ContactForm();

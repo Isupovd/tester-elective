@@ -7,7 +7,7 @@ class ContactForm
     public $name;
     public $phone;
     public $message;
-    public $filename = 'src/data/textfile.txt';
+    public $filename = 'tests/data/textfile.txt';
 
     public function validate()
     {
