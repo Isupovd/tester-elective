@@ -54,5 +54,6 @@ class ContactFormTest extends TestCase
         $object->phone = "+79000000000";
         $object->message = 'Hello';
         $object->save($object);
+        //assert
     }
 }
