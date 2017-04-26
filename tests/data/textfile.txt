@@ -1,1 +1,1 @@
-Vladimir+79000000000Hello
+name = Vladimir, Phone = +79000000000, Message = Hello

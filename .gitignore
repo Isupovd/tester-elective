@@ -3,3 +3,4 @@
 
 /vendor/
 src/data/*
+tests/data/*

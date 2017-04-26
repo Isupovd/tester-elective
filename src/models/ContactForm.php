@@ -26,7 +26,7 @@ class ContactForm
         $result = false;
 
         if ($this->validate()) {
-            file_put_contents($filename, $this->name . $this->phone . $this->message . "\n", FILE_APPEND);
+            file_put_contents($filename, 'name = ' . $this->name . ', Phone = ' . $this->phone . ', Message = ' . $this->message . "\n", FILE_APPEND);
             $result = true;
         }
         return $result;
