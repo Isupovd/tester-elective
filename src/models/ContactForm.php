@@ -19,15 +19,15 @@ class ContactForm
     }
 
 
-    public function save() : array
+    public function save()
     {
         $filename = 'textfile.txt';
+        $result = false;
 
         if ($this->validate()) {
-            file_put_contents($filename, $this->name, FILE_APPEND);
-            file_put_contents($filename, $this->phone, FILE_APPEND);
-            file_put_contents($filename, $this->message, FILE_APPEND);
-            file_put_contents($filename, "\n", FILE_APPEND);
+            file_put_contents($filename, $this->name . $this->phone . $this->message . "\n",FILE_APPEND);
+            $result = true;
         }
+        return $result;
     }
 }
