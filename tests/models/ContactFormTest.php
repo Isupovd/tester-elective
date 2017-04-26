@@ -22,7 +22,37 @@ class ContactFormTest extends TestCase
         $this->assertFalse($object->validate());
         $object->phone = "+79002040097";
         $object->name = 'Dima';
-        $object->message = 'Hellow World';
+        $object->message = 'Hello World';
         $this->assertTrue($object->validate());
+    }
+
+    public function testInvalidValidatePhone()
+    {
+        $object = new ContactForm();
+        $object->phone = "+79000000000";
+        $this->assertFalse($object->validate());
+    }
+
+    public function testInvalidValidateName()
+    {
+        $object = new ContactForm();
+        $object->name = 'Vladimir';
+        $this->assertFalse($object->validate());
+    }
+
+    public function testInvalidValidateMessage()
+    {
+        $object = new ContactForm();
+        $object->message = 'Hi';
+        $this->assertFalse($object->validate());
+    }
+
+    public function testSave()
+    {
+        $object = new ContactForm();
+        $object->name = 'Vladimir';
+        $object->phone = "+79000000000";
+        $object->message = 'Hello';
+        $object->save($object);
     }
 }
