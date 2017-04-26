@@ -50,18 +50,37 @@ class ContactFormTest extends TestCase
     public function testSave()
     {
         $object = new ContactForm();
+        $this->assertFalse($object->save());
         $object->name = 'Vladimir';
         $object->phone = "+79000000000";
         $object->message = 'Hello';
         $this->assertTrue($object->save());
     }
 
-    public function testInvalidSave()
+    public function testInvalidSaveWithName()
     {
         $object = new ContactForm();
         $object->name = 'Vladimir';
         $this->assertFalse($object->save());
+        $object->phone = '+79002050058';
+        $this->assertFalse($object->save());
+    }
+
+    public function testInvalidSaveWithPhone()
+    {
+        $object = new ContactForm();
+        $object->phone = '+79002050058';
+        $this->assertFalse($object->save());
         $object->message = 'Hello';
+        $this->assertFalse($object->save());
+    }
+
+    public function testInvalidSaveWithMessage()
+    {
+        $object = new ContactForm();
+        $object->message = 'Hello';
+        $this->assertFalse($object->save());
+        $object->name = 'Vladimir';
         $this->assertFalse($object->save());
     }
 }
