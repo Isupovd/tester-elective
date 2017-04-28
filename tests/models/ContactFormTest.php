@@ -61,6 +61,7 @@ class ContactFormTest extends TestCase
         $object->phone = "+79000000000";
         $object->message = 'Hello';
         $this->assertTrue($object->save());
+        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
     }
 
     public function testInvalidSaveWithName()
