@@ -3,4 +3,4 @@
 
 /vendor/
 src/data/*
-tests/data/*
+tests/data/textfile.txt
