@@ -59,5 +59,6 @@ class ContactFormTest extends TestCase
         $this->assertFalse($object->save());
         $object->phone = '+79002050058';
         $this->assertFalse($object->save());
+        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
     }
 }
