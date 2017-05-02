@@ -8,6 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class ContactFormTest extends TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        unlink('tests/data/textfile.txt');
+    }
+
     public function testCreateObject()
     {
         $object = new ContactForm();
@@ -16,27 +22,44 @@ class ContactFormTest extends TestCase
         $this->assertObjectHasAttribute('message', $object);
     }
 
-    public function testValidateName()
+    public function testValidate()
     {
         $object = new ContactForm();
-        $this->assertFalse($object->validateName());
+        $this->assertFalse($object->validate());
+        $object->phone = "+79002040097";
         $object->name = 'Dima';
-        $this->assertTrue($object->validateName());
+        $object->message = 'Hello World';
+        $this->assertTrue($object->validate());
     }
 
-    public function testValidatePhone()
+    public function testInvalidValidate()
     {
         $object = new ContactForm();
-        $this->assertFalse($object->validatePhone());
-        $object->phone = '+79002040097';
-        $this->assertTrue($object->validatePhone());
+        $object->phone = "+79000000000";
+        $this->assertFalse($object->validate());
+        $object->name = 'Vladimir';
+        $this->assertFalse($object->validate());
     }
 
-    public function testValidateMessage()
+    public function testSave()
     {
         $object = new ContactForm();
-        $this->assertFalse($object->validateMessage());
-        $object->message = 'Hello, my name is Dima';
-        $this->assertTrue($object->validateMessage());
+        $this->assertFalse($object->save());
+        $object->name = 'Vladimir';
+        $object->phone = "+79000000000";
+        $object->message = 'Hello';
+        $this->assertTrue($object->save());
+        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
+    }
+
+    public function testInvalidSave()
+    {
+        $object = new ContactForm();
+        $object->name = 'Vladimir';
+        $this->assertFalse($object->save());
+        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
+        $object->phone = '+79002050058';
+        $this->assertFalse($object->save());
+        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
     }
 }

@@ -7,33 +7,27 @@ class ContactForm
     public $name;
     public $phone;
     public $message;
+    public $filename = 'tests/data/textfile.txt';
 
-    public function validateName()
+    public function validate()
     {
-        $result = true;
+        $result = false;
 
-        if (empty($this->name)){
-            $result = false;
+        if (!empty($this->name) && (!empty($this->phone)) && (!empty($this->message))) {
+            $result = true;
         }
         return $result;
     }
 
-    public function validatePhone()
+
+    public function save()
     {
-        $result = true;
+        $filename = $this->filename;
+        $result = false;
 
-        if (empty($this->phone)){
-            $result = false;
-        }
-        return $result;
-    }
-
-    public function validateMessage()
-    {
-        $result = true;
-
-        if (empty($this->message)){
-            $result = false;
+        if ($this->validate()) {
+            file_put_contents($filename, 'name = ' . $this->name . ', Phone = ' . $this->phone . ', Message = ' . $this->message . "\n", FILE_APPEND);
+            $result = true;
         }
         return $result;
     }
