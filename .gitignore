@@ -1,6 +1,8 @@
+#Файлы Idea
 .idea/*
 .idea/
 
 /vendor/
-src/data/*
-tests/data/textfile.txt
+
+#Файлы созданные тестами
+tests/data/*..log
