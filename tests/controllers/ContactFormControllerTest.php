@@ -32,5 +32,4 @@ class ContactFormControllerTest extends TestCase
         $this->assertFalse($object->actionContactForm());
         $this->assertFileEquals('tests/data/expectedContactFormController..log', 'tests/data/ContactFormController..log');
     }
-
 }
