@@ -26,8 +26,12 @@ class ContactFormControllerTest extends TestCase
     public function testInvalidActionContactForm()
     {
         $object = new ContactFormController();
+        $this->assertFalse($object->actionContactForm());
+        $this->assertFileEquals('tests/data/expected/expectedContactFormController..log', 'tests/data/ContactFormController..log');
         $object->filename = 'tests/data/ContactFormController..log';
         $object->phone = '+79002040000';
+        $this->assertFalse($object->actionContactForm());
+        $this->assertFileEquals('tests/data/expected/expectedContactFormController..log', 'tests/data/ContactFormController..log');
         $object->message = 'Hello';
         $this->assertFalse($object->actionContactForm());
         $this->assertFileEquals('tests/data/expected/expectedContactFormController..log', 'tests/data/ContactFormController..log');
