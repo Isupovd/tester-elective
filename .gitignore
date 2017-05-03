@@ -4,3 +4,4 @@
 /vendor/
 src/data/*
 tests/data/textfile.txt
+tests/data/ContactFormController..log
