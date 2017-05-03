@@ -14,5 +14,4 @@ class ContactFormController extends ContactForm
         }
         return $result;
     }
-
 }
