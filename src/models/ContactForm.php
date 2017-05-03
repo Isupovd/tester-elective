@@ -7,7 +7,7 @@ class ContactForm
     public $name;
     public $phone;
     public $message;
-    public $filename = 'tests/data/textfile.txt';
+    public $filename;
 
     public function validate()
     {
@@ -20,12 +20,11 @@ class ContactForm
     }
 
 
-    public function save()
+    public function save($filename)
     {
-        $filename = $this->filename;
         $result = false;
 
-        if ($this->validate()) {
+        if ($this->validate() && (!empty($filename))) {
             file_put_contents($filename, 'name = ' . $this->name . ', Phone = ' . $this->phone . ', Message = ' . $this->message . "\n", FILE_APPEND);
             $result = true;
         }

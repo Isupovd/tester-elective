@@ -44,24 +44,24 @@ class ContactFormTest extends TestCase
     public function testSave()
     {
         $object = new ContactForm();
-        $object->filename = 'tests/data/ModelContactForm..log';
-        $this->assertFalse($object->save());
+        $filename = 'tests/data/ModelContactForm..log';
+        $this->assertFalse($object->save($filename));
         $object->name = 'Vladimir';
         $object->phone = "+79000000000";
         $object->message = 'Hello';
-        $this->assertTrue($object->save());
+        $this->assertTrue($object->save($filename));
         $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
     }
 
     public function testInvalidSave()
     {
         $object = new ContactForm();
-        $object->filename = 'tests/data/ModelContactForm..log';
+        $filename = 'tests/data/ModelContactForm..log';
         $object->name = 'Vladimir';
-        $this->assertFalse($object->save());
+        $this->assertFalse($object->save($filename));
         $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
         $object->phone = '+79002050058';
-        $this->assertFalse($object->save());
+        $this->assertFalse($object->save($filename));
         $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
     }
 }
