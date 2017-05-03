@@ -7,6 +7,7 @@ class ContactFormController extends ContactForm
     public function actionContactForm()
     {
         $result = false;
+
         if ($this->validate()){
             $this->save();
             $result = true;

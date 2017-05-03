@@ -11,7 +11,7 @@ class ContactFormTest extends TestCase
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        unlink('tests/data/textfile.txt');
+        unlink('tests/data/ModelContactForm..log');
     }
 
     public function testCreateObject()
@@ -44,22 +44,24 @@ class ContactFormTest extends TestCase
     public function testSave()
     {
         $object = new ContactForm();
+        $object->filename = 'tests/data/ModelContactForm..log';
         $this->assertFalse($object->save());
         $object->name = 'Vladimir';
         $object->phone = "+79000000000";
         $object->message = 'Hello';
         $this->assertTrue($object->save());
-        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
+        $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
     }
 
     public function testInvalidSave()
     {
         $object = new ContactForm();
+        $object->filename = 'tests/data/ModelContactForm..log';
         $object->name = 'Vladimir';
         $this->assertFalse($object->save());
-        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
+        $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
         $object->phone = '+79002050058';
         $this->assertFalse($object->save());
-        $this->assertFileEquals('tests/data/expectedtextfile.txt', 'tests/data/textfile.txt');
+        $this->assertFileEquals('tests/data/expected/expectedModelContactForm..log', 'tests/data/ModelContactForm..log');
     }
 }

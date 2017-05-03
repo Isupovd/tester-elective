@@ -20,7 +20,7 @@ class ContactFormControllerTest extends TestCase
         $object->phone = '+79002040000';
         $object->message = 'Hello';
         $this->assertTrue($object->actionContactForm());
-        $this->assertFileEquals('tests/data/expectedContactFormController..log', 'tests/data/ContactFormController..log');
+        $this->assertFileEquals('tests/data/expected/expectedContactFormController..log', 'tests/data/ContactFormController..log');
     }
 
     public function testInvalidActionContactForm()
@@ -30,6 +30,6 @@ class ContactFormControllerTest extends TestCase
         $object->phone = '+79002040000';
         $object->message = 'Hello';
         $this->assertFalse($object->actionContactForm());
-        $this->assertFileEquals('tests/data/expectedContactFormController..log', 'tests/data/ContactFormController..log');
+        $this->assertFileEquals('tests/data/expected/expectedContactFormController..log', 'tests/data/ContactFormController..log');
     }
 }
